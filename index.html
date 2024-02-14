@@ -40,34 +40,7 @@
             // Show gridlines for the hovered point
             Plotly.relayout('plot', {
                 'xaxis.showgrid': true,
-                'yaxis.showgrid': true,
-                'shapes': [{
-                    type: 'line',
-                    xref: 'x',
-                    yref: 'y',
-                    x0: x,
-                    x1: x,
-                    y0: 0,
-                    y1: y,
-                    line: {
-                        color: 'black',
-                        width: 1,
-                        dash: 'dot'
-                    }
-                }, {
-                    type: 'line',
-                    xref: 'x',
-                    yref: 'y',
-                    x0: 0,
-                    x1: x,
-                    y0: y,
-                    y1: y,
-                    line: {
-                        color: 'black',
-                        width: 1,
-                        dash: 'dot'
-                    }
-                }]
+                'yaxis.showgrid': true
             });
         });
 
@@ -76,8 +49,7 @@
             // Hide gridlines when not hovering over any point
             Plotly.relayout('plot', {
                 'xaxis.showgrid': false,
-                'yaxis.showgrid': false,
-                'shapes': []
+                'yaxis.showgrid': false
             });
         });
     </script>
