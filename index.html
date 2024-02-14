@@ -22,60 +22,13 @@
         // Define layout options
         var layout = {
             title: 'Tarkov Ammo Chart',
-            xaxis: { title: 'Damage', showgrid: false },
-            yaxis: { title: 'Penetration Value', showgrid: false },
-            hovermode: 'closest',
+            xaxis: { title: 'Damage' },
+            yaxis: { title: 'Penetration Value' },
             autosize: true
         };
 
         // Create the plot
         Plotly.newPlot('plot', [data], layout);
-
-        // Function to handle hover events
-        document.getElementById('plot').on('plotly_hover', function(eventData) {
-            var points = eventData.points;
-            var x = points[0].x;
-            var y = points[0].y;
-
-            // Show hash marks for the hovered point
-            Plotly.relayout('plot', {
-                'shapes': [{
-                    type: 'line',
-                    xref: 'x',
-                    yref: 'paper',
-                    x0: x,
-                    x1: x,
-                    y0: 0,
-                    y1: 1,
-                    line: {
-                        color: 'black',
-                        width: 1,
-                        dash: 'dot'
-                    }
-                }, {
-                    type: 'line',
-                    xref: 'paper',
-                    yref: 'y',
-                    x0: 0,
-                    x1: 1,
-                    y0: y,
-                    y1: y,
-                    line: {
-                        color: 'black',
-                        width: 1,
-                        dash: 'dot'
-                    }
-                }]
-            });
-        });
-
-        // Function to handle unhover events
-        document.getElementById('plot').on('plotly_unhover', function(eventData) {
-            // Remove the hash marks when not hovering over any point
-            Plotly.relayout('plot', {
-                'shapes': []
-            });
-        });
     </script>
 </body>
 </html>
