@@ -39,17 +39,43 @@
 
             // Show gridlines for the hovered point
             Plotly.relayout('plot', {
-                'xaxis.showgrid': true,
-                'yaxis.showgrid': true
+                'xaxis.showgrid': false,
+                'yaxis.showgrid': false,
+                'shapes': [{
+                    type: 'line',
+                    xref: 'x',
+                    yref: 'paper',
+                    x0: x,
+                    x1: x,
+                    y0: 0,
+                    y1: 1,
+                    line: {
+                        color: 'black',
+                        width: 1,
+                        dash: 'dot'
+                    }
+                }, {
+                    type: 'line',
+                    xref: 'paper',
+                    yref: 'y',
+                    x0: 0,
+                    x1: 1,
+                    y0: y,
+                    y1: y,
+                    line: {
+                        color: 'black',
+                        width: 1,
+                        dash: 'dot'
+                    }
+                }]
             });
         });
 
         // Function to handle unhover events
         document.getElementById('plot').on('plotly_unhover', function(eventData) {
-            // Hide gridlines when not hovering over any point
+            // Remove the dashed lines when not hovering over any point
             Plotly.relayout('plot', {
-                'xaxis.showgrid': false,
-                'yaxis.showgrid': false
+                'shapes': []
             });
         });
     </script>
