@@ -37,12 +37,8 @@
             var x = points[0].x;
             var y = points[0].y;
 
-            // Show gridlines for the hovered point
+            // Show hash marks for the hovered point
             Plotly.relayout('plot', {
-                'xaxis.showgrid': true,
-                'yaxis.showgrid': true,
-                'xaxis.gridcolor': 'rgba(0, 0, 0, 0.1)',
-                'yaxis.gridcolor': 'rgba(0, 0, 0, 0.1)',
                 'shapes': [{
                     type: 'line',
                     xref: 'x',
@@ -75,14 +71,11 @@
 
         // Function to handle unhover events
         document.getElementById('plot').on('plotly_unhover', function(eventData) {
-            // Hide gridlines when not hovering over any point
+            // Remove the hash marks when not hovering over any point
             Plotly.relayout('plot', {
-                'xaxis.showgrid': false,
-                'yaxis.showgrid': false,
                 'shapes': []
             });
         });
     </script>
 </body>
 </html>
-
