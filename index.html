@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weapon Characteristics</title>
+    <!-- Load Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Div to contain the Plotly graph -->
+    <div id="plot"></div>
+
+    <script>
+        // Define your data
+        var data = {
+            x: [10, 20, 30, 40], // Example x data
+            y: [20, 30, 40, 50], // Example y data
+            mode: 'markers'
+        };
+
+        // Define layout options
+        var layout = {
+            title: 'Weapon Characteristics',
+            xaxis: { title: 'Damage', showgrid: false },
+            yaxis: { title: 'Penetration Value', showgrid: false },
+            hovermode: 'closest'
+        };
+
+        // Create the plot
+        Plotly.newPlot('plot', [data], layout);
+
+        // Function to handle hover events
+        document.getElementById('plot').on('plotly_hover', function(eventData) {
+            var points = eventData.points;
+            var x = points[0].x;
+            var y = points[0].y;
+
+            // Show gridlines for the hovered point
+            Plotly.relayout('plot', {
+                'xaxis.showgrid': true,
+                'yaxis.showgrid': true,
+                'shapes': [{
+                    type: 'line',
+                    xref: 'x',
+                    yref: 'y',
+                    x0: x,
+                    x1: x,
+                    y0: 0,
+                    y1: y,
+                    line: {
+                        color: 'black',
+                        width: 1,
+                        dash: 'dot'
+                    }
+                }, {
+                    type: 'line',
+                    xref: 'x',
+                    yref: 'y',
+                    x0: 0,
+                    x1: x,
+                    y0: y,
+                    y1: y,
+                    line: {
+                        color: 'black',
+                        width: 1,
+                        dash: 'dot'
+                    }
+                }]
+            });
+        });
+
+        // Function to handle unhover events
+        document.getElementById('plot').on('plotly_unhover', function(eventData) {
+            // Hide gridlines when not hovering over any point
+            Plotly.relayout('plot', {
+                'xaxis.showgrid': false,
+                'yaxis.showgrid': false,
+                'shapes': []
+            });
+        });
+    </script>
+</body>
+</html>
