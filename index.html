@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weapon Characteristics</title>
+    <title>Tarkov Ammo Chart</title>
     <!-- Load Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <!-- Div to contain the Plotly graph -->
-    <div id="plot"></div>
+    <div id="plot" style="width: 100%; height: 100%;"></div>
 
     <script>
         // Define your data
@@ -21,10 +21,11 @@
 
         // Define layout options
         var layout = {
-            title: 'Weapon Characteristics',
+            title: 'Tarkov Ammo Chart',
             xaxis: { title: 'Damage', showgrid: false },
             yaxis: { title: 'Penetration Value', showgrid: false },
-            hovermode: 'closest'
+            hovermode: 'closest',
+            autosize: true
         };
 
         // Create the plot
